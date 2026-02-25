@@ -40,7 +40,7 @@ export default function RootLayout({
         className={`${notoSerifJP.variable} ${notoSansJP.variable} ${cormorant.variable} bg-cream text-ink`}
       >
         <header className="pt-10 pb-6">
-          <div className="mx-auto max-w-4xl px-6">
+          <div className="mx-auto max-w-6xl px-6">
             {/* Animated top rule */}
             <div className="h-px bg-sand animate-expand-width mb-6" />
 
@@ -71,12 +71,12 @@ export default function RootLayout({
           </div>
         </header>
 
-        <main className="mx-auto max-w-4xl px-6 py-8">
+        <main className="mx-auto max-w-6xl px-6 py-8">
           {children}
         </main>
 
         <footer className="mt-16 pb-12">
-          <div className="mx-auto max-w-4xl px-6">
+          <div className="mx-auto max-w-6xl px-6">
             {/* Double rule */}
             <hr className="divider-double mb-8" />
 
