@@ -2,17 +2,17 @@
 @plugin "@tailwindcss/typography";
 
 @theme {
-  /* Colors */
-  --color-cream: #0c1929;
-  --color-ink: #F5F0E8;
-  --color-espresso: #94a3b8;
-  --color-walnut: #94a3b8;
-  --color-sand: #475569;
-  --color-parchment: #1e293b;
-  --color-burgundy: #fca5a5;
-  --color-gold: #fcd34d;
-  --color-navy: #1e3a5f;
-  --color-ivory: #FEFCE8;
+  /* Colors - Ultramarine */
+  --color-cream: #120A8F;
+  --color-ink: #E8E6F5;
+  --color-espresso: #A5B4FC;
+  --color-walnut: #A5B4FC;
+  --color-sand: #6366F1;
+  --color-parchment: #1E1B4B;
+  --color-burgundy: #C7D2FE;
+  --color-gold: #FDE047;
+  --color-navy: #312E81;
+  --color-ivory: #EEF2FF;
 
   /* Fonts */
   --font-serif-jp: 'Noto Serif JP', 'Yu Mincho', serif;
@@ -36,8 +36,8 @@
 body {
   background-color: var(--color-cream);
   background-image: linear-gradient(
-      rgba(12, 25, 41, 0.85),
-      rgba(12, 25, 41, 0.85)
+      rgba(18, 10, 143, 0.88),
+      rgba(18, 10, 143, 0.88)
     ),
     url("https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?w=1920&q=80");
   background-size: cover;
@@ -220,14 +220,14 @@ body::before {
   background: var(--color-navy);
   position: relative;
   overflow: hidden;
-  border: 1px solid rgba(148, 163, 184, 0.2);
+  border: 1px solid rgba(165, 180, 252, 0.3);
 }
 
 .featured-panel::after {
   content: '';
   position: absolute;
   inset: 0;
-  background: radial-gradient(ellipse at 30% 50%, rgba(254, 252, 232, 0.08) 0%, transparent 70%);
+  background: radial-gradient(ellipse at 30% 50%, rgba(238, 242, 255, 0.1) 0%, transparent 70%);
   pointer-events: none;
 }
 
