@@ -9,7 +9,7 @@ type Post = {
   title: string;
   slug: { current: string };
   publishedAt: string;
-  body: unknown[];
+  body: any[];
 };
 
 function getVolNo(dateString: string) {
@@ -21,7 +21,7 @@ export async function generateStaticParams() {
   const slugs = await sanityFetch<{ slug: string }[]>({
     query: POST_SLUGS_QUERY,
   });
-  return slugs.filter((s) => s.slug).map((s) => ({ slug: s.slug }));
+  return slugs.map((s) => ({ slug: s.slug }));
 }
 
 export default async function PostPage({
@@ -84,8 +84,8 @@ export default async function PostPage({
       </header>
 
       {/* Article body with drop cap */}
-      <div className="drop-cap prose prose-lg prose-invert prose-stone max-w-none" style={{ letterSpacing: '0.04em', lineHeight: 2 }}>
-      <PortableText value={(post.body as any) ?? []} />
+      <div className="drop-cap prose prose-lg prose-stone max-w-none" style={{ letterSpacing: '0.04em', lineHeight: 2 }}>
+        <PortableText value={post.body} />
       </div>
 
       {/* End mark */}
@@ -103,7 +103,8 @@ export default async function PostPage({
           </Link>
           <a
             href="#"
-            className="text-sm text-walnut tracking-wide transition-colors duration-300 hover:text-ivory"
+            onClick={undefined}
+            className="text-sm text-walnut tracking-wide transition-colors duration-300 hover:text-ink"
           >
             Back to Top &uarr;
           </a>
