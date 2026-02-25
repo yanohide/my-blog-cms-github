@@ -18,9 +18,6 @@
   --font-serif-jp: 'Noto Serif JP', 'Yu Mincho', serif;
   --font-sans-jp: 'Noto Sans JP', 'Hiragino Sans', sans-serif;
   --font-display: 'Cormorant Garamond', 'Georgia', serif;
-  --font-family-serif-jp: var(--font-serif-jp);
-  --font-family-sans-jp: var(--font-sans-jp);
-  --font-family-display: var(--font-display);
 
   /* Animations */
   --animate-fade-slide-up: fadeSlideUp 0.8s ease-out both;
@@ -123,10 +120,6 @@ body::before {
 
 .animate-reveal-delay-5 {
   animation: fadeSlideUp 0.8s ease-out 0.5s both;
-}
-
-.animate-expand-width {
-  animation: expandWidth 0.8s ease-out both;
 }
 
 /* ============================================
