@@ -1,4 +1,5 @@
 import { createClient, type QueryParams } from "next-sanity";
+import imageUrlBuilder from "@sanity/image-url";
 
 const projectId =
   (process.env.NEXT_PUBLIC_SANITY_PROJECT_ID ?? "gr5bitvk").trim();
@@ -18,6 +19,13 @@ export const client = createClient({
   apiVersion: "2024-01-01",
   useCdn: true,
 });
+
+const builder = imageUrlBuilder(client);
+
+export function urlFor(source: { _ref?: string; asset?: { _ref?: string } } | null | undefined) {
+  if (!source) return null;
+  return builder.image(source as Parameters<typeof builder.image>[0]);
+}
 
 export async function sanityFetch<T>({
   query,

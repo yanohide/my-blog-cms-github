@@ -1,7 +1,7 @@
 import { defineQuery } from "next-sanity";
 
 export const POSTS_QUERY = defineQuery(
-  `*[_type == "post"] | order(publishedAt desc) { _id, title, slug, publishedAt }`
+  `*[_type == "post"] | order(publishedAt desc) { _id, title, slug, publishedAt, mainImage }`
 );
 
 export const POST_QUERY = defineQuery(

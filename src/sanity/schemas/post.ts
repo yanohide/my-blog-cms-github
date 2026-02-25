@@ -23,6 +23,12 @@ export default defineType({
       type: "datetime",
     }),
     defineField({
+      name: "mainImage",
+      title: "アイキャッチ画像",
+      type: "image",
+      options: { hotspot: true },
+    }),
+    defineField({
       name: "body",
       title: "Body",
       type: "array",

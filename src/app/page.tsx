@@ -1,12 +1,15 @@
 import Link from "next/link";
-import { sanityFetch } from "@/sanity/lib/client";
+import Image from "next/image";
+import { sanityFetch, urlFor } from "@/sanity/lib/client";
 import { POSTS_QUERY } from "@/sanity/lib/queries";
+import { getEyecatchFallback } from "@/sanity/lib/eyecatch-fallbacks";
 
 type Post = {
   _id: string;
   title: string;
   slug: { current: string };
   publishedAt: string;
+  mainImage?: { asset?: { _ref?: string } } | null;
 };
 
 function formatDate(dateString: string) {
@@ -41,12 +44,32 @@ export default async function Home() {
   return (
     <div>
       {/* Featured Article Panel */}
-      <section className="featured-panel -mx-6 px-8 py-14 md:px-14 md:py-20 mb-16 animate-reveal">
+      <section className="featured-panel -mx-6 px-8 py-14 md:px-14 md:py-20 mb-16 animate-reveal overflow-hidden">
         <Link
           href={`/posts/${featured.slug.current}`}
           className="block relative z-10 group"
         >
-          <div className="flex items-center gap-4 mb-6">
+          {/* Eyecatch */}
+          <div className="absolute inset-0 z-0 opacity-30">
+            {featured.mainImage && urlFor(featured.mainImage) ? (
+              <Image
+                src={urlFor(featured.mainImage)!.width(1200).height(600).url()}
+                alt=""
+                fill
+                className="object-cover"
+                sizes="100vw"
+              />
+            ) : (
+              <Image
+                src={getEyecatchFallback(0)}
+                alt=""
+                fill
+                className="object-cover"
+                sizes="100vw"
+              />
+            )}
+          </div>
+          <div className="flex items-center gap-4 mb-6 relative z-10">
             <span className="text-xs font-medium tracking-[0.2em] uppercase text-ivory/60 border border-ivory/20 px-3 py-1">
               Featured
             </span>
@@ -95,12 +118,27 @@ export default async function Home() {
                 const num = String(index + 1).padStart(2, "0");
                 const delayClass = `animate-reveal-delay-${Math.min(index + 2, 5)}`;
 
+                const eyecatchUrl =
+                  post.mainImage && urlFor(post.mainImage)
+                    ? urlFor(post.mainImage)!.width(200).height(120).url()
+                    : getEyecatchFallback(index + 1);
+
                 return (
                   <li key={post._id} className={delayClass}>
                     <Link
                       href={`/posts/${post.slug.current}`}
                       className="group flex items-start gap-6 py-7 px-4 -mx-4 hover-bg-slide"
                     >
+                      {/* Eyecatch thumbnail */}
+                      <div className="relative w-20 h-14 md:w-28 md:h-20 shrink-0 rounded overflow-hidden bg-sand/20">
+                        <Image
+                          src={eyecatchUrl}
+                          alt=""
+                          fill
+                          className="object-cover transition-transform duration-300 group-hover:scale-105"
+                          sizes="112px"
+                        />
+                      </div>
                       {/* Large number */}
                       <span className="font-display text-4xl md:text-5xl text-sand leading-none transition-colors duration-300 group-hover:text-gold shrink-0 pt-1">
                         {num}

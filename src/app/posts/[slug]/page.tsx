@@ -1,8 +1,10 @@
 import { notFound } from "next/navigation";
 import { PortableText } from "@portabletext/react";
 import Link from "next/link";
-import { sanityFetch } from "@/sanity/lib/client";
+import Image from "next/image";
+import { sanityFetch, urlFor } from "@/sanity/lib/client";
 import { POST_QUERY, POST_SLUGS_QUERY } from "@/sanity/lib/queries";
+import { getEyecatchFallback } from "@/sanity/lib/eyecatch-fallbacks";
 
 type Post = {
   _id: string;
@@ -10,6 +12,7 @@ type Post = {
   slug: { current: string };
   publishedAt: string;
   body: unknown[];
+  mainImage?: { asset?: { _ref?: string } } | null;
 };
 
 function getVolNo(dateString: string) {
@@ -41,8 +44,25 @@ export default async function PostPage({
 
   const volNo = post.publishedAt ? getVolNo(post.publishedAt) : null;
 
+  const eyecatchUrl =
+    post.mainImage && urlFor(post.mainImage)
+      ? urlFor(post.mainImage)!.width(1200).height(630).url()
+      : getEyecatchFallback(post.slug.current);
+
   return (
     <article className="animate-reveal">
+      {/* Eyecatch */}
+      <div className="relative w-full aspect-[16/9] -mx-6 mb-12 rounded-lg overflow-hidden">
+        <Image
+          src={eyecatchUrl}
+          alt={post.title}
+          fill
+          className="object-cover"
+          sizes="(max-width: 1152px) 100vw, 1152px"
+          priority
+        />
+      </div>
+
       {/* Back link */}
       <div className="mb-10">
         <Link href="/" className="back-link">
@@ -85,7 +105,7 @@ export default async function PostPage({
 
       {/* Article body with drop cap */}
       <div className="drop-cap prose prose-lg prose-invert prose-stone max-w-none" style={{ letterSpacing: '0.04em', lineHeight: 2 }}>
-      <PortableText value={(post.body as any) ?? []} />
+      <PortableText value={post.body ?? []} />
       </div>
 
       {/* End mark */}
