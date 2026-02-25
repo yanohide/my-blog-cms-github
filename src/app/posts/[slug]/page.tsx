@@ -84,7 +84,7 @@ export default async function PostPage({
       </header>
 
       {/* Article body with drop cap */}
-      <div className="drop-cap prose prose-lg prose-stone max-w-none" style={{ letterSpacing: '0.04em', lineHeight: 2 }}>
+      <div className="drop-cap prose prose-lg prose-invert prose-stone max-w-none" style={{ letterSpacing: '0.04em', lineHeight: 2 }}>
         <PortableText value={post.body ?? []} />
       </div>
 
@@ -103,7 +103,7 @@ export default async function PostPage({
           </Link>
           <a
             href="#"
-            className="text-sm text-walnut tracking-wide transition-colors duration-300 hover:text-ink"
+            className="text-sm text-walnut tracking-wide transition-colors duration-300 hover:text-ivory"
           >
             Back to Top &uarr;
           </a>

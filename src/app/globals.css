@@ -3,15 +3,15 @@
 
 @theme {
   /* Colors */
-  --color-cream: #F5F0E8;
-  --color-ink: #1C1917;
-  --color-espresso: #44403C;
-  --color-walnut: #78716C;
-  --color-sand: #D6D3D1;
-  --color-parchment: #E7E5E4;
-  --color-burgundy: #991B1B;
-  --color-gold: #A16207;
-  --color-navy: #1E3A5F;
+  --color-cream: #0c1929;
+  --color-ink: #F5F0E8;
+  --color-espresso: #94a3b8;
+  --color-walnut: #94a3b8;
+  --color-sand: #475569;
+  --color-parchment: #1e293b;
+  --color-burgundy: #fca5a5;
+  --color-gold: #fcd34d;
+  --color-navy: #1e3a5f;
   --color-ivory: #FEFCE8;
 
   /* Fonts */
@@ -49,7 +49,7 @@ body::before {
   inset: 0;
   pointer-events: none;
   z-index: 9999;
-  opacity: 0.03;
+  opacity: 0.02;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
   background-repeat: repeat;
   background-size: 256px 256px;
@@ -57,8 +57,8 @@ body::before {
 
 /* Selection */
 ::selection {
-  background-color: var(--color-burgundy);
-  color: var(--color-ivory);
+  background-color: var(--color-gold);
+  color: var(--color-cream);
 }
 
 /* ============================================
@@ -146,7 +146,7 @@ body::before {
   bottom: -2px;
   width: 0;
   height: 2px;
-  background: var(--color-burgundy);
+  background: var(--color-gold);
   transition: width 0.4s ease;
 }
 
@@ -164,7 +164,7 @@ body::before {
   content: '';
   position: absolute;
   inset: 0;
-  background: var(--color-parchment);
+  background: var(--color-navy);
   transform: scaleX(0);
   transform-origin: left;
   transition: transform 0.4s ease;
@@ -183,7 +183,7 @@ body::before {
 
 .hover-lift:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(28, 25, 23, 0.08);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
 }
 
 /* ============================================
@@ -199,7 +199,7 @@ body::before {
 
 .masthead-rule {
   height: 4px;
-  background: linear-gradient(to right, var(--color-ink), var(--color-espresso), var(--color-ink));
+  background: linear-gradient(to right, var(--color-sand), var(--color-espresso), var(--color-sand));
   border: none;
 }
 
@@ -211,13 +211,14 @@ body::before {
   background: var(--color-navy);
   position: relative;
   overflow: hidden;
+  border: 1px solid rgba(148, 163, 184, 0.2);
 }
 
 .featured-panel::after {
   content: '';
   position: absolute;
   inset: 0;
-  background: radial-gradient(ellipse at 30% 50%, rgba(254, 252, 232, 0.06) 0%, transparent 70%);
+  background: radial-gradient(ellipse at 30% 50%, rgba(254, 252, 232, 0.08) 0%, transparent 70%);
   pointer-events: none;
 }
 
@@ -238,7 +239,7 @@ body::before {
   font-family: var(--font-display);
   font-size: 4.5em;
   font-weight: 700;
-  color: var(--color-burgundy);
+  color: var(--color-gold);
   float: left;
   line-height: 0.8;
   margin-right: 0.1em;
@@ -264,8 +265,8 @@ body::before {
 }
 
 .prose :where(a):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
-  color: var(--color-burgundy);
-  text-decoration-color: var(--color-burgundy);
+  color: var(--color-gold);
+  text-decoration-color: var(--color-gold);
   text-underline-offset: 3px;
   transition: opacity 0.3s ease;
 }
@@ -280,7 +281,7 @@ body::before {
   border-bottom: 1px solid var(--color-sand);
   padding: 2em 1.5em;
   font-style: normal;
-  color: var(--color-espresso);
+  color: var(--color-walnut);
   position: relative;
   margin-top: 2em;
   margin-bottom: 2em;
@@ -290,7 +291,7 @@ body::before {
   content: '\201C';
   font-family: var(--font-display);
   font-size: 5em;
-  color: var(--color-sand);
+  color: var(--color-espresso);
   position: absolute;
   top: -0.1em;
   left: 0.05em;
@@ -318,7 +319,7 @@ body::before {
 }
 
 .back-link:hover {
-  color: var(--color-ink);
+  color: var(--color-ivory);
 }
 
 .back-link .arrow {
@@ -362,5 +363,5 @@ body::before {
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--color-walnut);
+  background: var(--color-espresso);
 }

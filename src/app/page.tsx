@@ -102,7 +102,7 @@ export default async function Home() {
                       className="group flex items-start gap-6 py-7 px-4 -mx-4 hover-bg-slide"
                     >
                       {/* Large number */}
-                      <span className="font-display text-4xl md:text-5xl text-sand leading-none transition-colors duration-300 group-hover:text-burgundy shrink-0 pt-1">
+                      <span className="font-display text-4xl md:text-5xl text-sand leading-none transition-colors duration-300 group-hover:text-gold shrink-0 pt-1">
                         {num}
                       </span>
 
@@ -112,7 +112,7 @@ export default async function Home() {
                             {formatDate(post.publishedAt)}
                           </time>
                         )}
-                        <h3 className="font-serif-jp text-xl md:text-2xl font-bold leading-snug mt-1.5 text-ink transition-colors duration-300 group-hover:text-burgundy">
+                        <h3 className="font-serif-jp text-xl md:text-2xl font-bold leading-snug mt-1.5 text-ink transition-colors duration-300 group-hover:text-gold">
                           {post.title}
                         </h3>
                       </div>
