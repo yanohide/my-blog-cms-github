@@ -34,12 +34,21 @@
    ============================================ */
 
 body {
-  background: var(--color-cream);
+  background-color: var(--color-cream);
+  background-image: linear-gradient(
+      rgba(12, 25, 41, 0.85),
+      rgba(12, 25, 41, 0.85)
+    ),
+    url("https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?w=1920&q=80");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
   color: var(--color-ink);
   font-family: var(--font-sans-jp);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   position: relative;
+  min-height: 100vh;
 }
 
 /* Paper grain texture */
