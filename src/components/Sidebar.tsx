@@ -8,11 +8,11 @@ const navItems = [
 
 export function Sidebar() {
   return (
-    <aside
-      className="fixed top-0 left-0 w-[250px] h-screen p-10 flex flex-col z-[100] box-border"
-      style={{ fontFamily: "'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif" }}
-    >
-      <Link href="/" className="text-[2rem] font-bold leading-[1.1] mb-[60px] text-wellbeing-logo">
+    <aside className="fixed top-0 left-0 w-[250px] h-screen p-10 flex flex-col z-[100] box-border bg-urban-bg border-r border-urban-border">
+      <Link
+        href="/"
+        className="text-[1.75rem] font-bold leading-[1.1] mb-[60px] text-urban-accent tracking-tight"
+      >
         Art
         <br />
         for
@@ -26,7 +26,7 @@ export function Sidebar() {
           <li key={item.href} className="mb-5">
             <Link
               href={item.href}
-              className="text-xl font-bold text-[#555] hover:text-wellbeing-text transition-colors"
+              className="text-sm font-medium text-urban-muted hover:text-urban-accent transition-colors tracking-wider uppercase"
             >
               {item.label}
             </Link>

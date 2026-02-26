@@ -26,16 +26,14 @@ export default async function Home() {
 
   return (
     <div>
-      {/* About Section - 有機的デザイン */}
       <AboutSection />
 
-      {/* Article & Event セクション */}
       {posts.length > 0 && (
         <section id="article" className="mt-24">
-          <h2 className="text-2xl font-bold mb-6 text-wellbeing-text">
+          <p className="text-urban-muted text-xs tracking-[0.3em] uppercase mb-6">
             Article & Event
-          </h2>
-          <ul className="list-none p-0 m-0 space-y-0">
+          </p>
+          <ul className="list-none p-0 m-0">
             {posts.map((post, index) => {
               const eyecatchUrl =
                 post.mainImage && urlFor(post.mainImage)
@@ -46,9 +44,9 @@ export default async function Home() {
                 <li key={post._id}>
                   <Link
                     href={`/posts/${post.slug.current}`}
-                    className="group flex items-start gap-6 py-6 border-b border-[#ddd] hover:bg-wellbeing-accent-green/10 transition-colors"
+                    className="group flex items-start gap-6 py-6 border-b border-urban-border hover:bg-urban-surface transition-colors"
                   >
-                    <div className="relative w-24 h-16 shrink-0 rounded-lg overflow-hidden blob-shape">
+                    <div className="relative w-24 h-16 shrink-0 overflow-hidden urban-card">
                       <Image
                         src={eyecatchUrl}
                         alt=""
@@ -59,15 +57,15 @@ export default async function Home() {
                     </div>
                     <div className="flex-1 min-w-0">
                       {post.publishedAt && (
-                        <time className="text-sm text-[#555]">
+                        <time className="text-xs text-urban-muted tracking-wider">
                           {formatDate(post.publishedAt)}
                         </time>
                       )}
-                      <h3 className="text-lg font-bold mt-1 text-wellbeing-text group-hover:text-wellbeing-accent-blue transition-colors">
+                      <h3 className="text-base font-semibold mt-1.5 text-urban-text group-hover:text-urban-accent transition-colors">
                         {post.title}
                       </h3>
                     </div>
-                    <span className="text-wellbeing-accent-blue opacity-0 group-hover:opacity-100 transition-opacity">
+                    <span className="text-urban-accent opacity-0 group-hover:opacity-100 transition-opacity text-sm">
                       →
                     </span>
                   </Link>

@@ -14,12 +14,14 @@
   --color-navy: #312E81;
   --color-ivory: #EEF2FF;
 
-  /* Colors - Well-being Design (有機的デザイン) */
-  --color-wellbeing-bg: #f4f3ea;
-  --color-wellbeing-text: #222222;
-  --color-wellbeing-accent-green: #a6ff4d;
-  --color-wellbeing-accent-blue: #0080ff;
-  --color-wellbeing-logo: #ff4500;
+  /* Colors - Urban / Metropolitan */
+  --color-urban-bg: #0a0a0a;
+  --color-urban-surface: #141414;
+  --color-urban-text: #fafafa;
+  --color-urban-muted: #888888;
+  --color-urban-border: #262626;
+  --color-urban-accent: #22d3ee;
+  --color-urban-accent-dim: #0891b2;
 
   /* Fonts */
   --font-serif-jp: 'Noto Serif JP', 'Yu Mincho', serif;
@@ -43,8 +45,8 @@
    ============================================ */
 
 body {
-  background-color: var(--color-wellbeing-bg);
-  color: var(--color-wellbeing-text);
+  background-color: var(--color-urban-bg);
+  color: var(--color-urban-text);
   font-family: var(--font-wellbeing);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -54,8 +56,8 @@ body {
 
 /* Selection */
 ::selection {
-  background-color: var(--color-wellbeing-accent-green);
-  color: var(--color-wellbeing-text);
+  background-color: var(--color-urban-accent);
+  color: var(--color-urban-bg);
 }
 
 /* ============================================
@@ -346,8 +348,10 @@ body {
    Well-being Design - Blob shape
    ============================================ */
 
-.blob-shape {
-  border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+/* Urban: sharp geometric corners */
+.urban-card {
+  border: 1px solid var(--color-urban-border);
+  border-radius: 2px;
 }
 
 .font-wellbeing {
@@ -363,14 +367,14 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--color-cream);
+  background: var(--color-urban-bg);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--color-sand);
-  border-radius: 4px;
+  background: var(--color-urban-border);
+  border-radius: 2px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--color-espresso);
+  background: var(--color-urban-accent);
 }
