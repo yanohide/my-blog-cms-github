@@ -2,7 +2,7 @@
 @plugin "@tailwindcss/typography";
 
 @theme {
-  /* Colors - Ultramarine */
+  /* Colors - Ultramarine (既存) */
   --color-cream: #120A8F;
   --color-ink: #E8E6F5;
   --color-espresso: #A5B4FC;
@@ -14,13 +14,22 @@
   --color-navy: #312E81;
   --color-ivory: #EEF2FF;
 
+  /* Colors - Well-being Design (有機的デザイン) */
+  --color-wellbeing-bg: #f4f3ea;
+  --color-wellbeing-text: #222222;
+  --color-wellbeing-accent-green: #a6ff4d;
+  --color-wellbeing-accent-blue: #0080ff;
+  --color-wellbeing-logo: #ff4500;
+
   /* Fonts */
   --font-serif-jp: 'Noto Serif JP', 'Yu Mincho', serif;
   --font-sans-jp: 'Noto Sans JP', 'Hiragino Sans', sans-serif;
   --font-display: 'Cormorant Garamond', 'Georgia', serif;
+  --font-wellbeing: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
   --font-family-serif-jp: var(--font-serif-jp);
   --font-family-sans-jp: var(--font-sans-jp);
   --font-family-display: var(--font-display);
+  --font-family-wellbeing: var(--font-wellbeing);
 
   /* Animations */
   --animate-fade-slide-up: fadeSlideUp 0.8s ease-out both;
@@ -34,40 +43,19 @@
    ============================================ */
 
 body {
-  background-color: var(--color-cream);
-  background-image: linear-gradient(
-      rgba(18, 10, 143, 0.88),
-      rgba(18, 10, 143, 0.88)
-    ),
-    url("https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?w=1920&q=80");
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
-  color: var(--color-ink);
-  font-family: var(--font-sans-jp);
+  background-color: var(--color-wellbeing-bg);
+  color: var(--color-wellbeing-text);
+  font-family: var(--font-wellbeing);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   position: relative;
   min-height: 100vh;
 }
 
-/* Paper grain texture */
-body::before {
-  content: '';
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 9999;
-  opacity: 0.02;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
-  background-repeat: repeat;
-  background-size: 256px 256px;
-}
-
 /* Selection */
 ::selection {
-  background-color: var(--color-gold);
-  color: var(--color-cream);
+  background-color: var(--color-wellbeing-accent-green);
+  color: var(--color-wellbeing-text);
 }
 
 /* ============================================
@@ -352,6 +340,18 @@ body::before {
   border: 1px solid var(--color-sand);
   padding: 0.25em 0.75em;
   color: var(--color-walnut);
+}
+
+/* ============================================
+   Well-being Design - Blob shape
+   ============================================ */
+
+.blob-shape {
+  border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+}
+
+.font-wellbeing {
+  font-family: var(--font-wellbeing);
 }
 
 /* ============================================

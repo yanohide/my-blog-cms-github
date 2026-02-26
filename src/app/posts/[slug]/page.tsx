@@ -1,4 +1,5 @@
 import { notFound } from "next/navigation";
+import type { TypedObject } from "@portabletext/types";
 import { PortableText } from "@portabletext/react";
 import Link from "next/link";
 import Image from "next/image";
@@ -50,9 +51,9 @@ export default async function PostPage({
       : getEyecatchFallback(post.slug.current);
 
   return (
-    <article className="animate-reveal">
+    <article>
       {/* Eyecatch */}
-      <div className="relative w-full aspect-[16/9] -mx-6 mb-12 rounded-lg overflow-hidden">
+      <div className="relative w-full aspect-[16/9] -mx-6 mb-12 rounded-lg overflow-hidden blob-shape">
         <Image
           src={eyecatchUrl}
           alt={post.title}
@@ -65,8 +66,13 @@ export default async function PostPage({
 
       {/* Back link */}
       <div className="mb-10">
-        <Link href="/" className="back-link">
-          <span className="arrow">&larr;</span>
+        <Link
+          href="/"
+          className="inline-flex items-center gap-2 text-[#555] text-sm hover:text-wellbeing-text transition-colors"
+        >
+          <span className="inline-block hover:-translate-x-1 transition-transform">
+            ←
+          </span>
           All Articles
         </Link>
       </div>
@@ -75,7 +81,7 @@ export default async function PostPage({
         {/* Date and Vol/No */}
         <div className="flex items-center gap-4 mb-6">
           {post.publishedAt && (
-            <time className="text-sm text-gold tracking-[0.15em] uppercase font-medium">
+            <time className="text-sm text-[#555]">
               {new Date(post.publishedAt).toLocaleDateString("ja-JP", {
                 year: "numeric",
                 month: "long",
@@ -84,48 +90,50 @@ export default async function PostPage({
             </time>
           )}
           {volNo && (
-            <span className="issue-badge">
+            <span className="text-xs border border-[#999] px-3 py-1 text-[#555]">
               Vol.{volNo.vol} No.{volNo.no}
             </span>
           )}
         </div>
 
         {/* Title */}
-        <h1 className="font-serif-jp font-black text-4xl md:text-5xl lg:text-7xl leading-[1.15] tracking-tight text-ink">
+        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-wellbeing-text">
           {post.title}
         </h1>
 
-        {/* Decorative line with diamond */}
+        {/* Decorative line */}
         <div className="mt-10 flex items-center gap-4">
-          <div className="flex-1 h-px bg-sand" />
-          <span className="text-sand text-sm">&#9670;</span>
-          <div className="flex-1 h-px bg-sand" />
+          <div className="flex-1 h-px bg-[#ccc]" />
+          <span className="text-wellbeing-accent-blue text-sm">◆</span>
+          <div className="flex-1 h-px bg-[#ccc]" />
         </div>
       </header>
 
-      {/* Article body with drop cap */}
-      <div className="drop-cap prose prose-lg prose-invert prose-stone max-w-none" style={{ letterSpacing: '0.04em', lineHeight: 2 }}>
-      <PortableText value={post.body ?? []} />
-      </div>
-
-      {/* End mark */}
-      <div className="mt-12 text-center">
-        <span className="text-ink text-lg">&#9632;</span>
+      {/* Article body */}
+      <div
+        className="prose prose-lg max-w-none text-wellbeing-text prose-headings:text-wellbeing-text prose-a:text-wellbeing-accent-blue prose-blockquote:border-wellbeing-accent-green prose-blockquote:border-l-4"
+        style={{ letterSpacing: "0.04em", lineHeight: 2 }}
+      >
+        <PortableText value={(post.body ?? []) as TypedObject[]} />
       </div>
 
       {/* Footer navigation */}
-      <footer className="mt-12">
-        <hr className="divider-double mb-8" />
+      <footer className="mt-12 pt-8 border-t border-[#ddd]">
         <div className="flex items-center justify-between">
-          <Link href="/" className="back-link">
-            <span className="arrow">&larr;</span>
+          <Link
+            href="/"
+            className="inline-flex items-center gap-2 text-[#555] text-sm hover:text-wellbeing-text transition-colors"
+          >
+            <span className="inline-block hover:-translate-x-1 transition-transform">
+              ←
+            </span>
             All Articles
           </Link>
           <a
             href="#"
-            className="text-sm text-walnut tracking-wide transition-colors duration-300 hover:text-ivory"
+            className="text-sm text-[#555] hover:text-wellbeing-accent-blue transition-colors"
           >
-            Back to Top &uarr;
+            Back to Top ↑
           </a>
         </div>
       </footer>
