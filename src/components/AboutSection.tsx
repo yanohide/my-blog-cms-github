@@ -18,11 +18,7 @@ export function AboutSection({
           About this project
         </p>
         <h2 className="text-[2rem] md:text-[2.5rem] font-bold mb-6 leading-tight text-urban-text tracking-tight">
-          よく生きていくために。
-          <br />
-          心身の状態が変化しても、
-          <br />
-          自由な創作や表現を。
+          哲学をするために必要な素養
         </h2>
         <p className="leading-[1.9] text-urban-muted text-[15px]">
           「Art for Well-being」は表現とケアとテクノロジーのこれからを考えるプロジェクトです。表現すること、表現に触れること、表現しあうことは、よく生きていくことに必要だとわたしたちは考えています。

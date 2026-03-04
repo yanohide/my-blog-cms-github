@@ -2,6 +2,8 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 
 ## Getting Started
 
+> **初心者の方へ**：詳しい手順は [docs/ローカルでサイトを開く手順.md](docs/ローカルでサイトを開く手順.md) をご覧ください。
+
 First, run the development server:
 
 ```bash
