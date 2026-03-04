@@ -22,15 +22,20 @@ function formatDate(dateString: string) {
 }
 
 export default async function Home() {
-  const posts = await sanityFetch<Post[]>({ query: POSTS_QUERY });
+  let posts: Post[] = [];
+  try {
+    posts = await sanityFetch<Post[]>({ query: POSTS_QUERY });
+  } catch {
+    posts = [];
+  }
 
   return (
     <div>
       <AboutSection />
 
       {posts.length > 0 && (
-        <section id="article" className="mt-24">
-          <p className="text-urban-muted text-xs tracking-[0.3em] uppercase mb-6">
+        <section id="article" className="mt-28">
+          <p className="text-urban-muted text-[11px] tracking-[0.35em] uppercase mb-8">
             Article & Event
           </p>
           <ul className="list-none p-0 m-0">
@@ -44,28 +49,31 @@ export default async function Home() {
                 <li key={post._id}>
                   <Link
                     href={`/posts/${post.slug.current}`}
-                    className="group flex items-start gap-6 py-6 border-b border-urban-border hover:bg-urban-surface transition-colors"
+                    className="group flex items-start gap-8 py-8 border-b border-urban-border hover:bg-urban-surface/50 transition-colors duration-200"
                   >
-                    <div className="relative w-24 h-16 shrink-0 overflow-hidden urban-card">
+                    <div className="relative w-28 h-[72px] shrink-0 overflow-hidden urban-card">
                       <Image
                         src={eyecatchUrl}
                         alt=""
                         fill
-                        className="object-cover"
-                        sizes="96px"
+                        className="object-cover transition-transform duration-300 group-hover:scale-[1.02]"
+                        sizes="112px"
                       />
                     </div>
                     <div className="flex-1 min-w-0">
                       {post.publishedAt && (
-                        <time className="text-xs text-urban-muted tracking-wider">
+                        <time className="text-[11px] text-urban-muted tracking-[0.15em]">
                           {formatDate(post.publishedAt)}
                         </time>
                       )}
-                      <h3 className="text-base font-semibold mt-1.5 text-urban-text group-hover:text-urban-accent transition-colors">
+                      <h3
+                        className="text-base font-medium mt-2 text-urban-text group-hover:text-urban-accent transition-colors duration-200"
+                        style={{ fontFamily: "var(--font-serif-jp)" }}
+                      >
                         {post.title}
                       </h3>
                     </div>
-                    <span className="text-urban-accent opacity-0 group-hover:opacity-100 transition-opacity text-sm">
+                    <span className="text-urban-accent opacity-0 group-hover:opacity-100 transition-opacity duration-200 text-sm mt-1">
                       →
                     </span>
                   </Link>

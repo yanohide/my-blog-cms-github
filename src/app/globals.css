@@ -14,22 +14,20 @@
   --color-navy: #312E81;
   --color-ivory: #EEF2FF;
 
-  /* Colors - Urban / Metropolitan */
-  --color-urban-bg: #0a0a0a;
-  --color-urban-surface: #141414;
-  --color-urban-text: #fafafa;
-  --color-urban-muted: #888888;
-  --color-urban-border: #262626;
-  --color-urban-accent: #22d3ee;
-  --color-urban-accent-dim: #0891b2;
+  /* Colors - Urban / Metropolitan (refined) */
+  --color-urban-bg: #080808;
+  --color-urban-surface: #111111;
+  --color-urban-text: #f5f5f5;
+  --color-urban-muted: #8a8a8a;
+  --color-urban-border: #2a2a2a;
+  --color-urban-accent: #67e8f9;
+  --color-urban-accent-dim: #22d3ee;
 
   /* Fonts */
-  --font-serif-jp: 'Noto Serif JP', 'Yu Mincho', serif;
-  --font-sans-jp: 'Noto Sans JP', 'Hiragino Sans', sans-serif;
-  --font-display: 'Cormorant Garamond', 'Georgia', serif;
+  --font-serif-jp: var(--font-noto-serif, 'Noto Serif JP'), 'Yu Mincho', serif;
+  --font-display: var(--font-cormorant, 'Cormorant Garamond'), Georgia, serif;
   --font-wellbeing: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
   --font-family-serif-jp: var(--font-serif-jp);
-  --font-family-sans-jp: var(--font-sans-jp);
   --font-family-display: var(--font-display);
   --font-family-wellbeing: var(--font-wellbeing);
 
@@ -236,13 +234,13 @@ body {
 
 .drop-cap > p:first-of-type::first-letter {
   font-family: var(--font-display);
-  font-size: 4.5em;
-  font-weight: 700;
-  color: var(--color-gold);
+  font-size: 4.25em;
+  font-weight: 600;
+  color: var(--color-urban-accent);
   float: left;
-  line-height: 0.8;
-  margin-right: 0.1em;
-  margin-top: 0.05em;
+  line-height: 0.85;
+  margin-right: 0.08em;
+  margin-top: 0.02em;
 }
 
 /* ============================================
@@ -251,56 +249,48 @@ body {
 
 .prose :where(h1, h2, h3, h4):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
   font-family: var(--font-serif-jp);
-  letter-spacing: 0.02em;
+  letter-spacing: 0.03em;
+  font-weight: 600;
 }
 
 .prose :where(h2):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
-  padding-bottom: 0.5em;
-  border-bottom: 1px solid var(--color-sand);
+  padding-bottom: 0.6em;
+  margin-top: 2em;
+  border-bottom: 1px solid var(--color-urban-border);
 }
 
 .prose :where(p):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
-  line-height: 2;
+  line-height: 2.1;
+  letter-spacing: 0.02em;
 }
 
 .prose :where(a):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
-  color: var(--color-gold);
-  text-decoration-color: var(--color-gold);
-  text-underline-offset: 3px;
-  transition: opacity 0.3s ease;
+  color: var(--color-urban-accent);
+  text-decoration-color: var(--color-urban-accent-dim);
+  text-underline-offset: 4px;
+  transition: color 0.25s ease, opacity 0.25s ease;
 }
 
 .prose :where(a):not(:where([class~="not-prose"], [class~="not-prose"] *)):hover {
-  opacity: 0.7;
+  color: var(--color-urban-accent-dim);
+  opacity: 0.9;
 }
 
 .prose :where(blockquote):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
-  border-left: none;
-  border-top: 1px solid var(--color-sand);
-  border-bottom: 1px solid var(--color-sand);
-  padding: 2em 1.5em;
+  border-left: 3px solid var(--color-urban-accent);
+  padding: 1.5em 1.5em 1.5em 1.75em;
   font-style: normal;
-  color: var(--color-walnut);
+  color: var(--color-urban-muted);
   position: relative;
   margin-top: 2em;
   margin-bottom: 2em;
-}
-
-.prose :where(blockquote):not(:where([class~="not-prose"], [class~="not-prose"] *))::before {
-  content: '\201C';
-  font-family: var(--font-display);
-  font-size: 5em;
-  color: var(--color-espresso);
-  position: absolute;
-  top: -0.1em;
-  left: 0.05em;
-  line-height: 1;
-  pointer-events: none;
+  background: rgba(103, 232, 249, 0.08);
+  border-radius: 0 4px 4px 0;
 }
 
 .prose :where(ul > li)::marker,
 .prose :where(ol > li)::marker {
-  color: var(--color-walnut);
+  color: var(--color-urban-accent-dim);
 }
 
 /* ============================================
@@ -311,14 +301,14 @@ body {
   display: inline-flex;
   align-items: center;
   gap: 0.5em;
-  color: var(--color-walnut);
+  color: var(--color-urban-muted);
   font-size: 0.875rem;
   letter-spacing: 0.05em;
-  transition: color 0.3s ease;
+  transition: color 0.25s ease;
 }
 
 .back-link:hover {
-  color: var(--color-ivory);
+  color: var(--color-urban-accent);
 }
 
 .back-link .arrow {
@@ -339,9 +329,9 @@ body {
   font-size: 0.65rem;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  border: 1px solid var(--color-sand);
+  border: 1px solid var(--color-urban-border);
   padding: 0.25em 0.75em;
-  color: var(--color-walnut);
+  color: var(--color-urban-muted);
 }
 
 /* ============================================
@@ -351,7 +341,21 @@ body {
 /* Urban: sharp geometric corners */
 .urban-card {
   border: 1px solid var(--color-urban-border);
-  border-radius: 2px;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+/* Elegant divider */
+.elegant-divider {
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--color-urban-border) 20%,
+    var(--color-urban-border) 80%,
+    transparent 100%
+  );
+  border: none;
 }
 
 .font-wellbeing {

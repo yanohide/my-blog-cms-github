@@ -1,5 +1,5 @@
 import { createClient, type QueryParams } from "next-sanity";
-import imageUrlBuilder from "@sanity/image-url";
+import { createImageUrlBuilder } from "@sanity/image-url";
 
 const projectId =
   (process.env.NEXT_PUBLIC_SANITY_PROJECT_ID ?? "gr5bitvk").trim();
@@ -20,7 +20,7 @@ export const client = createClient({
   useCdn: true,
 });
 
-const builder = imageUrlBuilder(client);
+const builder = createImageUrlBuilder(client);
 
 export function urlFor(source: { _ref?: string; asset?: { _ref?: string } } | null | undefined) {
   if (!source) return null;
