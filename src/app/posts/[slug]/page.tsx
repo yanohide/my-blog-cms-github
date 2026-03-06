@@ -1,6 +1,9 @@
 import { notFound } from "next/navigation";
 import type { TypedObject } from "@portabletext/types";
 import { PortableText } from "@portabletext/react";
+
+// 常にサーバーで最新データを取得（静的生成による404を防ぐ）
+export const dynamic = "force-dynamic";
 import { portableTextComponents } from "@/components/PortableTextComponents";
 import Link from "next/link";
 import Image from "next/image";
@@ -44,11 +47,12 @@ export default async function PostPage({
     params: { slug },
   });
 
-  if (!post) {
+  if (!post || !post.slug?.current) {
     notFound();
   }
 
   const volNo = post.publishedAt ? getVolNo(post.publishedAt) : null;
+  const bodyContent = Array.isArray(post.body) ? post.body : [];
 
   const eyecatchUrl =
     post.mainImage && urlFor(post.mainImage)
@@ -117,7 +121,7 @@ export default async function PostPage({
         style={{ letterSpacing: "0.04em", lineHeight: 2.1 }}
       >
         <PortableText
-          value={(post.body ?? []) as TypedObject[]}
+          value={bodyContent as TypedObject[]}
           components={portableTextComponents}
         />
       </div>

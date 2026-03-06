@@ -11,7 +11,7 @@ export function Sidebar() {
     <aside className="fixed top-0 left-0 w-[260px] h-screen px-12 py-16 flex flex-col z-[100] box-border bg-urban-bg border-r border-urban-border">
       <Link
         href="/"
-        className="text-[1.85rem] font-semibold leading-[1.15] mb-[72px] text-urban-accent tracking-[0.02em]"
+        className="block text-[2rem] font-semibold leading-[1.2] mb-[72px] text-urban-accent tracking-[0.04em] transition-colors duration-300 hover:text-urban-accent-dim"
         style={{ fontFamily: "var(--font-display)" }}
       >
         Art

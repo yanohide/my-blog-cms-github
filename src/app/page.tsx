@@ -24,7 +24,8 @@ function formatDate(dateString: string) {
 export default async function Home() {
   let posts: Post[] = [];
   try {
-    posts = await sanityFetch<Post[]>({ query: POSTS_QUERY });
+    const raw = await sanityFetch<Post[]>({ query: POSTS_QUERY });
+    posts = raw.filter((p) => p.slug?.current);
   } catch {
     posts = [];
   }

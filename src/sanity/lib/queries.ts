@@ -5,7 +5,7 @@ export const POSTS_QUERY = defineQuery(
 );
 
 export const POST_QUERY = defineQuery(
-  `*[_type == "post" && slug.current == $slug][0]`
+  `*[_type == "post" && slug.current == $slug][0] { _id, title, slug, publishedAt, mainImage, body }`
 );
 
 export const POST_SLUGS_QUERY = defineQuery(
